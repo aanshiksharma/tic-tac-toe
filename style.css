@@ -1,0 +1,532 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Nunito:wght@300&family=Work+Sans:wght@300&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+:root {
+    /* ---------- MAIN COLORS ---------- */
+    --background-color: rgb(33, 38, 40);
+    --secondary-color: rgb(51, 56, 63);
+    --primary-color: rgb(0, 0, 0);
+    --blur-background-color: rgba(0, 0, 0, 0.1);
+    --footer-color: rgb(38, 40, 40);
+    --grid-border-color: #1f51ff;
+
+    /* ---------- NEON COLORS ---------- */
+    --neon-purple: #bc13fe;
+    --neon-pink: #ff1493;
+    --neon-blue: #1f51ff;
+    --neon-red: #ff3131;
+    --neon-green: #39ff14;
+
+    /* ---------- GAME COLORS ---------- */
+    --cross-color: #ff3131;
+    --circle-color: #39ff14;
+}
+
+main,
+footer {
+    max-width: 1080px;
+    margin: auto;
+    box-shadow: 0 0 4px #000;
+}
+
+body {
+    background: var(--background-color);
+    color: white;
+}
+
+/* ----------- GOOGLE ICONS STYLING ----------- */
+/* Cross Icon in the Dialog Box */
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+/* Hamburger Menu Icon in the Navigation Bar */
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+
+/* Header Styling */
+header {
+    box-shadow: 0 0 10px var(--shadow-color);
+    background: var(--primary-color);
+    backdrop-filter: blur(50px);
+}
+
+.header {
+    max-width: 1080px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--font-color);
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    padding: 4px;
+}
+
+/* Hamburger Menu Button */
+.header button {
+display: none;
+}
+
+/* Logo */
+.logo img {
+    width: 45px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+}
+
+/* Name */
+h1 {
+    margin-left: 20px;
+    font-size: 26px;
+}
+
+/* Navigation Bar inside Header */
+.navbar ul {
+    display: flex;
+}
+
+.navbar li {
+    padding: 10px 2px;
+    transition: 0.1s;
+}
+
+.navbar a {
+    color: var(--font-color);
+    text-decoration: none;
+    padding: 10px;
+    position: relative;
+}
+
+.navbar a::after {
+    content: '';
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-bottom: 3px solid var(--neon-red);
+    transition: width 0.3s ease-out;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* Profile Section inside Header */
+.profile img {
+    width: 30px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    margin-right: 6px;
+}
+
+
+
+/* Main  */
+main {
+    background: var(--secondary-color);
+    font-family: 'Nunito', sans-serif;
+    min-height: calc(100vh - 53px);
+    display: grid;
+    place-items: center;
+}
+
+/* ------------ GAME APPEARANCE ------------ */
+/* Game Information Display */
+.game-display {
+    width: max-content;
+    margin: auto;
+}
+
+.turn {
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    height: 60px;
+    width: 146px;
+    margin: 20px 10px;
+}
+
+.turn.active {
+    transform: scale(1.1);
+    background: #3c67ff;
+    box-shadow: 4px 4px 10px #1f51ff;
+}
+
+.game-element {
+    width: 50px;
+}
+
+
+
+/* Game */
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.grid-container {
+    width: 300px;
+}
+
+.grid {
+    margin: 20px auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    box-sizing: content-box;
+}
+
+.card {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1 / 1.1;
+    /* cursor: pointer; */
+}
+
+
+#modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: var(--blur-background-color);
+    backdrop-filter: blur(50px);
+    color: white;
+}
+
+.dialog {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.cross-icon {
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    transition: color 0.4s ease-out;
+}
+
+.cross-icon:hover {
+    color: var(--neon-pink);
+}
+
+.modal-display {
+    display: flex;
+    justify-content: space-evenly;
+    height: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.modal-buttons button {
+    padding: 4px 8px;
+    margin: 0 2px;
+    background: transparent;
+    outline: 0;
+    border: 0;
+    font-family: 'Nunito', sans-serif;
+    border-bottom: 3px solid white;
+    border-radius: 4px;
+    color: white;
+    position: relative;
+    cursor: pointer;
+}
+
+.modal-buttons button::after {
+    content: '';
+    background: transparent;
+    width: 0;
+    height: 100%;
+    border-bottom: 3px solid #ff1493;
+    border-radius: 4px;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    transition: width 0.4s ease-out;
+}
+
+.modal-buttons button:focus::after,
+.modal-buttons button:hover::after {
+    width: 100%;
+}
+
+
+
+.result {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* ------------ GAME ELEMENTS' APPEARANCE ------------ */
+/* CIRCLE Appearance */
+/* Main Element */
+.circle {
+    margin: auto;
+    width: 70%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    outline: 4px solid var(--circle-color);
+    outline-offset: -4px;
+    position: relative;
+}
+
+/* Before Element */
+.card .circle::before {
+    content: '';
+    height: 100%;
+    width: 50%;
+    background: var(--secondary-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: circle 0.25s ease-out forwards;
+}
+
+/* After Element */
+.card .circle::after {
+    content: '';
+    height: 100%;
+    width: 50%;
+    background: var(--secondary-color);
+    position: absolute;
+    top: 0;
+    right: 0;
+    animation: circle 0.25s ease-in forwards 0.25s;
+}
+
+/* CROSS Appearance */
+/* Main Container */
+.cross {
+    width: 90%;
+    aspect-ratio: 1 / 1;
+    background: transparent;
+    transform: translate(50%, 11.5%);
+    position: relative;
+}
+
+/* Two Bars of the Cross */
+/* Main Elements */
+.bar1,
+.bar2 {
+    width: 4px;
+    height: 80%;
+    background: transparent;
+    position: absolute;
+    top: 0;
+}
+
+.bar1 {
+    transform: rotateZ(45deg);
+    transform-origin: center;
+}
+
+.bar2 {
+    transform: rotateZ(-45deg);
+    transform-origin: center;
+}
+
+/* After Elements */
+.bar1::after,
+.bar2::after {
+    content: '';
+    background: var(--cross-color);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: cross 0.5s ease-out forwards;
+}
+
+
+/* -------------- ANIMATIONS -------------- */
+/* CIRCLE Appearance Animation */
+@keyframes circle {
+    from {
+        height: 100%;
+    }
+
+    to {
+        height: 0;
+    }
+}
+
+/* CROSS Appearance Animation */
+@keyframes cross {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer */
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 10px 40px;
+    background: var(--footer-color);
+    color: var(--font-color)
+}
+
+.footer-top h3{
+    margin-top: 20px;
+    color: var(--neon-blue);
+}
+
+.footer-top ul {
+    margin-top: 10px;
+}
+
+.footer-top li {
+    padding: 4px 0;
+    transition: 0.1s;
+}
+
+.footer-top a {
+    color: white;
+    padding-right: 20px;
+    text-decoration: none;
+    transition: color 0.2s ease-out;
+}
+
+.footer-top a:hover {
+    color: var(--neon-red);
+}
+
+.footer-bottom {
+    text-align: center;
+    background: var(--footer-color);
+    color: var(--font-color);
+    padding: 0 20px;
+}
+
+.footer-bottom address {
+    padding: 10px 0;
+    color: white;
+}
+
+.footer-bottom>p {
+    font-size: 12px;
+}
+
+.footer-bottom a:hover {
+    opacity: 0.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Utility Classes for the Game */
+.bt {
+    border-top: 4px solid var(--grid-border-color);
+}
+
+.br {
+    border-right: 4px solid var(--grid-border-color);
+}
+
+.bb {
+    border-bottom: 4px solid var(--grid-border-color);
+}
+
+.bl {
+    border-left: 4px solid var(--grid-border-color);
+}
+
+
+/* Utility Classes */
+.font1 {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.font2 {
+    font-family: 'Nunito', sans-serif;
+}
+
+.font3 {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.flex {
+    display: flex;
+}
+
+.aic {
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}

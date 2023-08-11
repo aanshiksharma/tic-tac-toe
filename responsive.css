@@ -1,0 +1,15 @@
+@media screen and (max-width: 880px){
+    .header button {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .header h1{
+        display: none;
+    }
+}
