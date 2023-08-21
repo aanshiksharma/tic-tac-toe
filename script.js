@@ -1,8 +1,8 @@
 // ---------------- CONSTANTS AND VARIABLES ---------------- //
 // Constants
 const username = document.getElementById('username');
-// const name = prompt("Enter your name.", "Guest");
-const name = "Guest";
+const name = prompt("Enter your name.", "Guest");
+// const name = "Guest";
 const card = document.querySelectorAll('.card');
 const turnBox = document.querySelectorAll('.turn');
 const modal = document.getElementById('modal');
